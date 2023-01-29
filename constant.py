@@ -69,5 +69,17 @@ for i in nom:
     sp_bomb_att.append(pygame.image.load('bomb/' + i +'.png').convert_alpha())
 
 
+corn_boy = pygame.image.load('corn_boy.png').convert_alpha()
+corn = pygame.image.load('corn.png')
+sp_peas = []
+sp_peas_att = []
+vil_peas = ['peas']
+vil_peas1 = ['peas', 'peas1', 'peas2', 'peas3', 'peas4', 'peas5']
+
+for i in vil_peas:
+    sp_peas.append(pygame.image.load('aggressivepeas/' + i +'.png').convert_alpha())
+for i in vil_peas1:
+    sp_peas_att.append(pygame.image.load('aggressivepeas/' + i +'.png').convert_alpha())
+
 kossa1 = pygame.image.load('kossa.png').convert_alpha()
 kossa2 = pygame.image.load('kossa_rev.png').convert_alpha()

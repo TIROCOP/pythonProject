@@ -220,6 +220,16 @@ class Board:
                 print(self.board)
                 return 0
 
+            if name1 == 'corn':
+                cor = Corn_boy((self.bo1_xy[1] * self.cell_size + self.left + 50,
+                            self.cell_size * self.bo1_xy[0] + self.top + 50), self.bo1_xy)
+                vil_sprites_list.add(cor)
+                print(self.board[self.bo1_xy[0]][self.bo1_xy[1]])
+                self.board[self.bo1_xy[0]][self.bo1_xy[1]][1] = self.board[self.bo1_xy[0]][self.bo1_xy[1]][2]
+                self.board[self.bo1_xy[0]][self.bo1_xy[1]][2] = ''
+                print(self.board)
+                return 0
+
             if name1 == 'drag':
                 dr = DragonFruit((self.bo1_xy[1] * self.cell_size + self.left + 50,
                                   self.cell_size * self.bo1_xy[0] + self.top + 50), self.bo1_xy)
@@ -228,6 +238,12 @@ class Board:
                 self.board[self.bo1_xy[0]][self.bo1_xy[1]][1] = self.board[self.bo1_xy[0]][self.bo1_xy[1]][2]
                 self.board[self.bo1_xy[0]][self.bo1_xy[1]][2] = ''
                 print(self.board[self.bo1_xy[0]][self.bo1_xy[1]])
+                return 0
+
+            if name1 == 'peas':
+                peas = Peas((self.bo1_xy[1] * self.cell_size + self.left + 50,
+                                  self.cell_size * self.bo1_xy[0] + self.top + 50))
+                vil_shoot_list.add(peas)
                 return 0
 
             '''print(self.board[0])
@@ -310,6 +326,7 @@ def kiker_chek():
                 en_at.drr()
 
 
+
 def paused(fl):
     pause = True
     while pause:
@@ -336,10 +353,10 @@ def paused(fl):
 
                     # board.get_click(event.pos)
                 if event.type == pygame.QUIT:
-                    pause = False
                     sys.exit()
 
                 if event.type == pygame.KEYDOWN:
+
                     if event.key == pygame.K_p:
                         pause = False
             screen.blit(paused_image, (550, 450))
@@ -347,7 +364,7 @@ def paused(fl):
 
 
 spvil1 = [['tomatomet_veiv.png', 'tom'], ['dragonfruit/dragonfruit.png', 'drag'],
-          ['mario.png', ''], ['mario.png', ''],
+          ['aggressivepeas/peas.png', 'peas'], ['corn_boy.png', 'corn'],
           ['mario.png', ''], ['mario.png', ''],
           ['mario.png', ''], ['mario.png', '']]
 spen2 = [['king_veiv.png', 'king'], ['bomb/bomber.png', 'bm'],
@@ -365,7 +382,7 @@ if __name__ == '__main__':
     bg = pygame.image.load("fon_1.png")
     screen = pygame.display.set_mode(size)
 
-    pygame.display.set_caption("PVZ")
+    pygame.display.set_caption("PVM")
 
     running = True
     clock = pygame.time.Clock()
@@ -385,7 +402,7 @@ if __name__ == '__main__':
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pos = pygame.mouse.get_pos()
                 if pos[0] > 760 and pos[0] < 840 and pos[1] < 30:
-                    paused()
+                    paused(3)
 
             if event.type == pygame.QUIT:
                 running = False
@@ -393,7 +410,7 @@ if __name__ == '__main__':
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_p:
-                    paused()
+                    paused(3)
                     print('pausa')
 
             # main
@@ -419,7 +436,7 @@ if __name__ == '__main__':
                         board.change_pos((1, 0), 2)
                     if event.key == pygame.K_RIGHT:
                         board.change_pos((-1, 0), 2)
-                    if event.key == pygame.K_p:
+                    if event.key == pygame.K_l:
                         target_enem = False
                     if event.key == pygame.K_KP_0:
                         re = board.prithp(2)
